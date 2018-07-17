@@ -4,6 +4,7 @@
 Clone the repository and install the npm modules.
 
 ```
+npm install typescript -g
 git clone https://github.com/voze/jeffbot.git
 cd jeffbot
 npm install
