@@ -10,7 +10,6 @@ export default class YoutubeVideo {
     videoId: string
     title: string
     description: string
-
     constructor(videoId: string, title: string, description: string) {
         this.videoId = videoId
         this.title = title
@@ -28,7 +27,7 @@ export class Youtube {
             part: 'id,snippet',
             q: query,
             type: 'video',
-            maxResults: 10
+            maxResults: 7
         });
         return response.data.items.map(vidObject => new YoutubeVideo(vidObject.id.videoId, vidObject.snippet.title, vidObject.snippet.description))
     }
