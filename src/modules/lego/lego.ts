@@ -10,7 +10,7 @@ export default class Lego {
         return "https://images.brickset.com/sets/images/" + this.legosetId + "-1" + ".jpg"
     }
 
-    async exists() {
-        return await urle(this.getImageUrl()).exists
+    exists() {
+        return urle(this.getImageUrl())
     }
 }

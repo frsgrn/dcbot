@@ -11,7 +11,7 @@ export default class Response {
 
 export class EmbeddedImageResponse extends Response {
     send(title: string, description: string, imageUrl: string): Promise<any> {
-        return this.channel.send(new DiscordAPI.RichEmbed().setTitle(title).setDescription(description).setImage(imageUrl))
+        return this.channel.send(new DiscordAPI.RichEmbed().setTitle(title).setDescription(description).setImage(imageUrl).setTimestamp())
     }
 }
 
