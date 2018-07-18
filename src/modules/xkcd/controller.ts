@@ -8,7 +8,7 @@ export default function searchXKCD (command: Command) {
 
     xkcd.exists().then(async result => {
         let xkcdJson = await xkcd.getXKCDJson()
-        if (result) new EmbeddedImageResponse(command.channel).send("xkcd " + xkcdJson.num + " - " + xkcdJson.title, command.getTokenAt(2).content, xkcdJson.img)
+        if (result) new EmbeddedImageResponse(command.channel).send("xkcd " + xkcdJson.num + " - " + xkcdJson.title, xkcdJson.alt + ((!command.getTokenAt(2).isEmpty()) ? "\n\n\"" + command.getTokenAt(2).content + "\"" : ""), xkcdJson.img)
         else new ErrorResponse(command.channel).send(new BotError("Unable to find that xkcd."))
     })
 }

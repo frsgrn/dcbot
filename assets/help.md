@@ -8,5 +8,5 @@ __*Commands*__
 **video <query>** - *Links a video that best matches the query.*
 **videos <query>** - *Links multiple videos that best match the query.*
 **lego <legosetID> <?caption>** - *Replies with a picture of that legoset.*
-**xkcd <xkcdID> <?caption>** - *Replies with a picture of that xkcd.*
+**xkcd <?xkcdID> <?caption>** - *Replies with a picture of that xkcd. (Or the latest xkcd if no id is specified)*
 **help** - *Displays this message.*
