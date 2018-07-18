@@ -1,13 +1,22 @@
 import Token from "../token";
+import Command from "./command";
 
-export default interface CommandOption {
-    check(token?: Token): boolean
-    update(token?: Token): Token
+export default abstract class CommandOption {
+    abstract check(token?: Token): boolean
+    abstract update(token?: Token): Token
+
+    static compareToOptions(command: Command, options: Array<CommandOption>) {
+        for (let [index, option] of options.entries()) {
+            if (!option.check(command.tokens[index])) return false
+        }
+        return true
+    }
 }
 
-export class RequiredCommandOption implements CommandOption {
+export class RequiredCommandOption extends CommandOption {
     equals?: string
     constructor(equals?: string) {
+        super()
         this.equals = equals
     }
 
@@ -22,9 +31,10 @@ export class RequiredCommandOption implements CommandOption {
     }
 }
 
-export class OptionalCommandOption implements CommandOption {
+export class OptionalCommandOption extends CommandOption {
     defaultValue: string
     constructor(defaultValue: string) {
+        super()
         this.defaultValue = defaultValue
     }
 

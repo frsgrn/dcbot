@@ -22,7 +22,7 @@ export default class YoutubeVideo {
 }
 
 export class Youtube {
-    async listVideos(query: string) {
+    async listVideos(query: string): Promise<Array<YoutubeVideo>> {
         const response = await youtubeAPI.search.list({
             part: 'id,snippet',
             q: query,

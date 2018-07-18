@@ -1,4 +1,7 @@
 import Token from "../token";
+import routes, { getRoute } from "../routing/routes";
+import CommandParser from "./commandParser";
+import Response from "../response";
 
 export default class Command {
     public content: string
@@ -15,6 +18,23 @@ export default class Command {
 
     getTokenAt(index): Token {
         return this.tokens[index]
+    }
+
+    async execute() {
+        let route = getRoute(this, routes)
+        if (route) {
+            this.tokens = CommandParser.transform(this.tokens, route.commandOptions)
+            try {
+                return route.action(this)
+            } catch(e) {
+                console.error(e)
+                new Response(this.channel, "Internal error").send()
+                return null
+            }
+        }
+        else {
+            return null
+        }
     }
 
     setTokenAt(index, value: Token): void {

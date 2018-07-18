@@ -1,4 +1,4 @@
-import { RequiredCommandOption, OptionalCommandOption } from "../command/commandOption";
+import CommandOption, { RequiredCommandOption, OptionalCommandOption } from "../command/commandOption";
 import Route from './route'
 
 import LegoController from '../modules/lego/controller'
@@ -6,6 +6,7 @@ import findYoutubeVideo, { listYoutubeVideos } from '../modules/youtube/controll
 import HelpController from '../modules/help/controller'
 import XKCDController from '../modules/xkcd/controller'
 import MathController from '../modules/math/controller'
+import Command from "../command/command";
 
 export default [
     new Route([new RequiredCommandOption("lego"), new RequiredCommandOption(), new OptionalCommandOption("")], LegoController),
@@ -15,3 +16,11 @@ export default [
     new Route([new RequiredCommandOption("help")], HelpController),
     new Route([new RequiredCommandOption("rand"), new RequiredCommandOption()], MathController)
 ]
+
+export function getRoute(command: Command, routes: Array<Route>): Route {
+    for (let route of routes) {
+        if (CommandOption.compareToOptions(command, route.commandOptions)) {
+            return route
+        }
+    }
+}
