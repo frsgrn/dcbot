@@ -27,7 +27,6 @@ export default class Command {
             try {
                 return route.action(this)
             } catch(e) {
-                console.error(e)
                 new Response(this.channel, "Internal error").send()
                 return null
             }
