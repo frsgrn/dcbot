@@ -1,5 +1,4 @@
 # jeffbot
-[Add me to your server!](https://discordapp.com/oauth2/authorize?client_id=459065201992531979&scope=bot)
 ## Setup
 Clone the repository and install the npm modules.
 
