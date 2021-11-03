@@ -16,7 +16,7 @@
     "math-expression-evaluator": "^1.2.17",
     "promised-url-exists": "^1.0.7",
     "request-promise-native": "^1.0.5",
-    "validator": "^10.4.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/node": "^10.5.2"
